@@ -1,0 +1,51 @@
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma imagem da página assinada pela banca com o comando abaixo:
+%
+% \begin{folhadeaprovacao}
+% \includepdf{folhadeaprovacao_final.pdf}
+% \end{folhadeaprovacao}
+
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\bfseries\imprimirautor}
+
+    \vspace*{2.5cm}
+    % \vspace*{\fill}
+    \begin{center}
+      \bfseries\imprimirtitulo
+    \end{center}
+    \vspace*{2cm}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    %  \vspace*{\fill}
+   \end{center}
+    \vspace*{1cm}
+    \begin{center}
+        Aprovado em: 24 de novembro de 2012.
+    \end{center}
+    \vspace*{1cm}
+    
+    
+    \begin{center}
+        \textbf{Banca Examinadora:}
+    \end{center}
+    \par
+   %TODO arrumar isso aqui em ambiente, e possibilitar até 4 pessoas.
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+   \assinatura{\textbf{Coorientador} \\ Convidado2 }
+   \assinatura{\textbf{Professor} \\ Convidado 2}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+\begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}  
+\end{folhadeaprovacao}

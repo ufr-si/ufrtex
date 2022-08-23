@@ -1,0 +1,115 @@
+% ---
+% Este é o documento principal do template para Trabalhos Acadêmicos da Universidade Federal de Rondonópolis. Esse template usa o AbnTeX2 , que possui diversos comandos para elaboração de um documento acadêmico.
+% ---
+\input{ufr/cabecalho}
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+\input{pre-textual/ficha-bibliografica.tex}
+% ---
+% Inserir errata
+% ---
+\input{pre-textual/errata.tex}
+% ---
+% Inserir folha de aprovação
+% ---
+\input{pre-textual/folha-aprovacao.tex}
+% ---
+% Dedicatória (elemento opcional).
+% ---
+\input{pre-textual/dedicatoria.tex}
+
+% --- 
+% Agradecimentos (elemento opcional).
+% --- 
+\input{pre-textual/agradecimentos.tex}
+
+% ---
+% Epígrafe (elemento opcional)
+%--- 
+% \input{pre-textual/epigrafe.tex}
+
+% ---
+% Resumo (elemento OBRIGATÓRIO)
+%--- 
+\input{pre-textual/resumos.tex}
+% ---
+% Listas
+%--- 
+\input{pre-textual/listas.tex}
+
+% ---
+% Inserção do sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+    
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\input{textual}
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{bibliografia}
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+% Inicia os apêndices
+% ---
+    \begin{apendicesenv}
+        \input{postextual/apendices/apendice-a.tex}
+        \input{postextual/apendices/apendice-b.tex}
+    \end{apendicesenv}
+    % ---
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+    \begin{anexosenv}
+        \input{postextual/anexos/anexo-a.tex}
+        \input{postextual/anexos/anexo-b.tex}
+    \end{anexosenv}
+
+\end{document}
