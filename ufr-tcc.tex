@@ -35,7 +35,6 @@
 % ---
 % Inserir a ficha bibliografica
 % ---
-
 \input{pre-textual/ficha-bibliografica.tex}
 % ---
 % Inserir errata
@@ -49,17 +48,14 @@
 % Dedicatória (elemento opcional).
 % ---
 \input{pre-textual/dedicatoria.tex}
-
 % --- 
 % Agradecimentos (elemento opcional).
 % --- 
 \input{pre-textual/agradecimentos.tex}
-
 % ---
 % Epígrafe (elemento opcional)
 %--- 
-% \input{pre-textual/epigrafe.tex}
-
+\input{pre-textual/epigrafe.tex}
 % ---
 % Resumo (elemento OBRIGATÓRIO)
 %--- 
@@ -79,28 +75,23 @@
     
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
-\input{textual}
-% ----------------------------------------------------------
-% ----------------------------------------------------------
-
-
+\input{textual} % NÃO REMOVER OU MODIFICAR
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
-\postextual
+\postextual  % NÃO REMOVER OU MODIFICAR
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{bibliografia}
-
+\bibliography{bibliografia}  % NÃO REMOVER OU MODIFICAR
 % ----------------------------------------------------------
 % Apêndices
 % ----------------------------------------------------------
 % Inicia os apêndices
 % ---
-    \begin{apendicesenv}
-        \input{postextual/apendices/apendice-a.tex}
-        \input{postextual/apendices/apendice-b.tex}
+    \begin{apendicesenv}        \input{postextual/apendices/apendice-a.tex}
+    %Adicionar apêndices, caso existam, aqui. Se não existirem, essa linha pode ser apagada.
+         \input{postextual/apendices/apendice-b.tex}
     \end{apendicesenv}
     % ---
 
@@ -108,6 +99,7 @@
 % Anexos
 % ----------------------------------------------------------
     \begin{anexosenv}
+    %Adicionar anexos, caso existam, aqui. Se não existirem, essa linha pode ser apagada.
         \input{postextual/anexos/anexo-a.tex}
         \input{postextual/anexos/anexo-b.tex}
     \end{anexosenv}
