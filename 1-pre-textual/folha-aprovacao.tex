@@ -1,0 +1,47 @@
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma imagem da página assinada pela banca com o comando abaixo:
+%
+% \begin{folhadeaprovacao}
+% \includepdf{folhadeaprovacao_final.pdf}
+% \end{folhadeaprovacao}
+
+\begin{folhadeaprovacao}% 
+    \begin{center}
+    
+        {\bfseries\imprimirautor}
+        
+        \vspace{3\baselineskip}
+        
+        {\bfseries\imprimirtitulo}
+        
+        \vspace{3\baselineskip}
+    
+    \end{center}
+
+    %preambulo
+    \hspace{.4\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    
+   
+    \vspace{3\baselineskip}
+
+    \begin{center}
+        \imprimirdataaprovacao
+    \end{center}  
+    
+    \vspace{3\baselineskip}
+    \begin{center}
+        \textbf{Banca Examinadora:}
+    \end{center}
+   \vspace*{-1cm}
+   
+   \assinatura{\textbf{\imprimirorientador} \\Orientador \\ UFR} 
+   \assinatura{\textbf{Nome do Co-orientador} \\ Co-orientador \\ UFR ou outra instituição }
+   
+   \assinatura{\textbf{Nome Externo} \\ Examinador(a) \\ UFR ou outra instituição}
+   % \assinatura{\textbf{Nome Externo} \\ Examinador(a) \\ UFR ou outra instituição}
+   
+
+\end{folhadeaprovacao}

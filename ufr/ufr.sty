@@ -1,5 +1,5 @@
 %%
-%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade Federal de Rondonópolis
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade Federal de Rondonópolis.
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -22,11 +22,26 @@
 
 \ProvidesPackage{ufr/ufr}[2022/08/20 Criacao desta customizacao do abnTeX2]
 
-\usepackage{times}
+\RequirePackage{times}
+\RequirePackage{parskip}
+% Configurações de aparência do PDF final
+% ---
+% Pacotes básicos 
+% ---	
+\RequirePackage[T1]{fontenc}		% Selecao de codigos de fonte.
+% \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\RequirePackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\RequirePackage{xcolor}				% Controle das cores
+\RequirePackage{graphicx}			% Inclusão de gráficos
+\RequirePackage{microtype} 			% para melhorias de justificação
 
-% \usepackage{setspace}
-\usepackage{parskip}
+\RequirePackage{lipsum}				% para geração de dummy text
 
+% --- Pacotes de citações
+\RequirePackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
+\RequirePackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% COMANDOS  
 \newcommand{\imprimirdeptinst}{}
 \newcommand{\deptinst}[1]
 {\renewcommand{\imprimirdeptinst}{\uppercase{#1}}}
@@ -35,6 +50,10 @@
 \newcommand{\imprimircurso}{}
 \newcommand{\curso}[1]
 {\renewcommand{\imprimircurso}{\uppercase{#1}}}
+
+\newcommand{\imprimirdataaprovacao}{}
+\newcommand{\dataaprovacao}[1]
+{\renewcommand{\imprimirdataaprovacao}{Aprovado em: #1}}
 
 \renewcommand{\instituicao}[1]{\renewcommand{\imprimirinstituicao}{\uppercase{#1}}}
 
@@ -46,7 +65,7 @@
     {
      
     \begin{figure}
-        \centering        \includegraphics[scale=0.5]{ufr/images/logo.jpeg} 
+        \centering        \includegraphics[scale=1.0]{ufr/images/logo.jpeg} 
         
     \end{figure}
     }
@@ -69,10 +88,10 @@
     \end{center}
     \vfill
 
-    \large\imprimirlocal
+    \imprimirlocal
 
-    \large\imprimirdata 
-    \vspace*{1cm}
+    \imprimirdata 
+    % \vspace*{1\baselineskip}
   \end{capa}
 }
 
@@ -81,18 +100,17 @@
 
 \renewcommand{\folhaderostocontent}{
 \begin{center}
-% {\ABNTEXchapterfont UNIVERSIDADE FEDERAL DE RONDONÓPOLIS}
-% \vspace*{1cm}
     
 {\imprimirautor}
 
-\vspace*{\fill}\vspace*{\fill}
+\vspace*{6\baselineskip}
+% \vspace*{\fill}\vspace*{\fill}
 
 \begin{center}
 \bfseries\imprimirtitulo
 \end{center}
 
-\vspace*{\fill}
+\vspace*{7\baselineskip}
 
 \abntex@ifnotempty{\imprimirpreambulo}{
   \hspace{.45\textwidth}
@@ -101,7 +119,9 @@
   \imprimirpreambulo
   \vspace*{0.25cm}
   \par
-  \imprimirorientadorRotulo~\imprimirorientador \par
+  \imprimirorientadorRotulo~\imprimirorientador 
+  \\ 
+  
   \abntex@ifnotempty{\imprimircoorientador}{
         {\imprimircoorientadorRotulo~\imprimircoorientador} 
   }
@@ -110,67 +130,24 @@
 
 \vspace*{\fill}
 
-\vspace*{\fill}
-
 {\imprimirlocal}
 \par
-
 {\imprimirdata}
-\vspace*{1cm}
-
+% \vspace*{1\baselineskip}
 \end{center}
 }
 
 \makeatother
 
 % ---
-% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DE RONDONÓPOLIS
-% --- 
-
-%--
-% OUTRAS CUSTOMIZACOES
-% ---
-% Configurações de aparência do PDF final
-% ---
-% Pacotes básicos 
-% ---	
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{xcolor}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
-% ---
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-% ---
-\usepackage{lipsum}				% para geração de dummy text
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
 % ---
 
-% ---
-% Pacotes de citações
-% ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
-
-\input{dados.tex}
+\input{.configuracoes/dados.tex}
 
 % informações do PDF
 \makeatletter
@@ -189,20 +166,15 @@
 		bookmarksdepth=4
 }
 \makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DE RONDONÓPOLIS
 % --- 
 
-% ---
-% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
-% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
-\makeatletter
-\setlength{\@fptop}{5pt} % Set distance from top of page to first float
-\makeatother
-% ---
 
-% ---
 % Possibilita criação de Quadros e Lista de quadros.
 % Ver https://github.com/abntex/abntex2/issues/176
-%
+
 \newcommand{\quadroname}{Quadro}
 \newcommand{\listofquadrosname}{Lista de Ilustrações}
 
@@ -228,8 +200,7 @@
 % TODO: será que é melhor usar 1.25? 
 
 % Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
+\setlength{\parskip}{0.2cm} 
 
 % Em acordo com normas ABNT 
 \setlength{\parindent}{1.25cm}
@@ -253,11 +224,16 @@
   }{\end{abstract}\PRIVATEclearpageifneeded}
 
 
-\renewcommand{\ABNTEXchapterfont}{\bfseries}
-\renewcommand{\ABNTEXchapterfontsize}{}
+\renewenvironment{epigrafe}[1][]{%
+   \ifthenelse{\equal{#1}{}}{%
+    \PRIVATEbookmarkthis{\dedicatorianame}
+    }{\pretextualchapter{#1}}
+    \vspace*{\fill}
+	\hfill\begin{minipage}{0.5\linewidth}
+		\itshape
+  }
+{\end{minipage} \vspace*{5cm} \PRIVATEclearpageifneeded}
 
-\renewcommand{\ABNTEXsectionfont}{\bfseries}
-\renewcommand{\ABNTEXsectionfontsize}{}
 
 \newcommand{\citeauthyear}[1]{\citeauthor{#1} (\citeyear{#1})}
 
@@ -266,8 +242,8 @@
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
 
 % Estilo da section 1.1
-\renewcommand{\ABNTEXsectionfont}{\bfseries}
-\setboolean{ABNTEXuppersection}{false}
+% \renewcommand{\ABNTEXsectionfont}{\bfseries}
+% \setboolean{ABNTEXuppersection}{false}
 \renewcommand{\ABNTEXsectionfontsize}{\normalsize}
 
 % Estilo da subsection 1.1.1
@@ -278,9 +254,42 @@
 \renewcommand{\ABNTEXsubsubsectionfont}{\itshape\bfseries}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
 
-% Estilo da subsection 1.1.1.1
+% Estilo da subsection 1.1.1.1.1
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% https://github.com/abntex/abntex2/issues/229
+% Margens - NBR 14724/2011 - 5.1 Formato
+% ---
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout[fixed]
+
+% Notas de rodape - footnotes - NBR 14724/2011 - 5.2.1
+% \setlength{\footmarkwidth}{1.2em} % largura do footnotemark
+% \setlength{\footmarksep}{0em}
+% \footmarkstyle{\footnotesize{\textsuperscript{#1}}\hfill}
+\renewcommand*{\footnoterule}{ \kern-3pt \hrule width 50mm \kern 2.6pt }
+
+% ---
+% Citacao direta com mais de 3 linhas - ABNT NBR 10520/2002 - 5.3
+% \newlength{\ABNTEXcitacaorecuo}% recuo de 4 cm da margem esquerda
+% \ifthenelse{\equal{\ABNTEXistwocolumn}{true}}{%
+%  \setlength{\ABNTEXcitacaorecuo}{1.8cm}
+% }{% else
+%  \setlength{\ABNTEXcitacaorecuo}{4cm}
+% }
+
+% \newenvironment*{citacao}[1][default]
+% {
+%   \begin{adjustwidth}{\ABNTEXcitacaorecuo}{0mm}
+%   \ABNTEXfontereduzida
+%   \begin{SingleSpace}
+%     \ifthenelse{\not\equal{#1}}{default}{\itshape\selectlanguage{#1}}{}
+% }{
+%   \end{SingleSpace}
+%   \end{adjustwidth}
+% ---
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%        Configuração do Sumário      %%
@@ -296,25 +305,22 @@
 % Modifica o espaçamento no sumário
 % Nao ha espacos
 \setlength{\cftbeforeparagraphskip}{0pt}
-\setlength{\cftbeforesubsectionskip}{1.2pt}
-\setlength{\cftbeforesectionskip}{1.2pt}
-\setlength{\cftbeforesubsubsectionskip}{1.2pt}
+% \setlength{\cftbeforesubsectionskip}{1.2pt}
+% \setlength{\cftbeforesectionskip}{1.2pt}
+% \setlength{\cftbeforesubsubsectionskip}{1.2pt}
 \setlength{\cftbeforechapterskip}{1.2pt}
 
-\renewcommand\cftchapterfont{\bfseries\normalsize}
-\renewcommand\cftsectionfont{\bfseries\normalsize}
+%modificando fonte do sumário
+% \renewcommand\cftchapterfont{\bfseries\normalsize}
+% \renewcommand\cftsectionfont{\bfseries\normalsize}
 \renewcommand\cftsubsectionfont{\normalsize\normalfont}
 \renewcommand\cftsubsubsectionfont{\itshape\bfseries\normalsize}
 % Altera a fonte da seção quinária
 \renewcommand*{\cftparagraphfont}{\normalsize\normalfont\itshape}
 
 % Páginas do sumário não podem ser negrito.
-\renewcommand\cftchapterpagefont{\normalfont}
-\renewcommand\cftsectionpagefont{\normalfont}
-\renewcommand\cftsubsectionpagefont{\normalfont}
+% \renewcommand\cftchapterpagefont{\normalfont}
+% \renewcommand\cftsectionpagefont{\normalfont}
+% \renewcommand\cftsubsectionpagefont{\normalfont}
 % Altera a fonte da seção quinária
-\renewcommand\cftparagraphpagefont{\normalfont}
-
-
-
- 
+% \renewcommand\cftparagraphpagefont{\normalfont}

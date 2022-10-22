@@ -1,7 +1,32 @@
+\documentclass[
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão frente. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+\usepackage{ufr/ufr} % usando package da ufr.
+
+\input{.configuracoes/customizacao.tex}
+
+% \usepackage[color=red,showframe]{fgruler}
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
 % ---
 % Este é o documento principal do template para Trabalhos Acadêmicos da Universidade Federal de Rondonópolis. Esse template usa o AbnTeX2 , que possui diversos comandos para elaboração de um documento acadêmico.
+% Você pode modificar esse documento se achar necessário, mas recomendamos que evite fazer isso.
 % ---
-\input{ufr/cabecalho}
 % ----
 % Início do documento
 % ----
@@ -13,95 +38,31 @@
 
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
-
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
 \pretextual
-
-% ---
-% Capa
-% ---
 \imprimircapa
-% ---
+\imprimirfolhaderosto
+%\imprimirfolhaderosto* % se for incluir ficha catalografica
 
-% ---
-% Folha de rosto
-% (o * indica que haverá a ficha bibliográfica)
-% ---
-\imprimirfolhaderosto*
-% ---
+\input{1-pre-textual/ficha-bibliografica.tex}
+\input{1-pre-textual/errata.tex}
+\input{1-pre-textual/folha-aprovacao.tex}
+\input{1-pre-textual/dedicatoria.tex}
+\input{1-pre-textual/agradecimentos.tex}
+\input{1-pre-textual/epigrafe.tex}
+\input{1-pre-textual/resumos.tex}
+\input{1-pre-textual/listas.tex}
 
-% ---
-% Inserir a ficha bibliografica
-% ---
-\input{pre-textual/ficha-bibliografica.tex}
-% ---
-% Inserir errata
-% ---
-\input{pre-textual/errata.tex}
-% ---
-% Inserir folha de aprovação
-% ---
-\input{pre-textual/folha-aprovacao.tex}
-% ---
-% Dedicatória (elemento opcional).
-% ---
-\input{pre-textual/dedicatoria.tex}
-% --- 
-% Agradecimentos (elemento opcional).
-% --- 
-\input{pre-textual/agradecimentos.tex}
-% ---
-% Epígrafe (elemento opcional)
-%--- 
-\input{pre-textual/epigrafe.tex}
-% ---
-% Resumo (elemento OBRIGATÓRIO)
-%--- 
-\input{pre-textual/resumos.tex}
-% ---
-% Listas
-%--- 
-\input{pre-textual/listas.tex}
+\imprimirsumario
 
-% ---
-% Inserção do sumario
-% ---
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-% ---
-    
-% ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
-\input{textual} % NÃO REMOVER OU MODIFICAR
-% ----------------------------------------------------------
-% ELEMENTOS PÓS-TEXTUAIS
-% ----------------------------------------------------------
-\postextual  % NÃO REMOVER OU MODIFICAR
-% ----------------------------------------------------------
-% Referências bibliográficas
-% ----------------------------------------------------------
-\bibliography{bibliografia}  % NÃO REMOVER OU MODIFICAR
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-% Inicia os apêndices
-% ---
-    \begin{apendicesenv}        \input{postextual/apendices/apendice-a.tex}
-    %Adicionar apêndices, caso existam, aqui. Se não existirem, essa linha pode ser apagada.
-         \input{postextual/apendices/apendice-b.tex}
-    \end{apendicesenv}
-    % ---
+\input{.configuracoes/ordem-capitulos.tex}
 
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-    \begin{anexosenv}
-    %Adicionar anexos, caso existam, aqui. Se não existirem, essa linha pode ser apagada.
-        \input{postextual/anexos/anexo-a.tex}
-        \input{postextual/anexos/anexo-b.tex}
-    \end{anexosenv}
+\postextual
+
+\bibliography{bibliografia}
+
+\input{3-pos-textual/lista-apendices-e-anexos}
 
 \end{document}
