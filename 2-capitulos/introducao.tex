@@ -22,13 +22,34 @@ Aqui serão dadas indicações gerais para a apresentação gráfica de seu trab
 
 Todo o texto deve ser digitado em espaço 1,5 cm, exceto: citações de mais de três linhas, notas de rodapé, referências, legendas e fontes das ilustrações e das tabelas que devem ser digitados em espaço simples. As referências, ao final do trabalho, devem ser separadas entre si por um espaço simples em branco.
 
+
+\begin{table}[htb]
+\IBGEtab{
+  \caption{Um Exemplo de tabela alinhada que pode ser longa ou curta,
+  conforme padrão IBGE.}
+  \label{tabela-ibge}
+}{
+  \begin{tabular}{ccc}
+  \toprule
+   Nome & Nascimento & Documento \\
+  \midrule \midrule
+   Maria da Silva & 11/11/1111 & 111.111.111-11 \\
+  \bottomrule
+\end{tabular}%
+}{%
+  \vspace{-0.1cm}
+  \fonte{Produzido pelos autores}%
+}
+\end{table}
+
 \begin{citacao}
     Esta é uma citação, \lipsum[20]
 \end{citacao}
 
 As margens da página devem ser de 3 cm nas margens esquerda e superior e 2 cm nas margens direita e inferior.
 
-Os títulos dos capítulos (seções primárias, secundárias, etc.) devem ser digitados após a sua numeração (indicação de seção), separados por um espaço. O texto deve iniciar em outra linha, separado por um espaço entrelinhas de 1,5. 
+Os títulos dos capítulos (seções primárias, secundárias, etc.) devem ser digitados após a sua numeração (indicação de seção), separados por um espaço. O texto deve iniciar em outra linha, separado por um espaço entrelinhas de 1,5.
+
 
 As seções primárias iniciam-se em nova página e são grafadas em caixa alta e negrito. As seções secundárias são grafadas em negrito com apenas a primeira letra maiúscula. As seções terciárias não são grafadas em negrito. Escreva um título criativo consoante o arcabouço teórico e seu plano de trabalho constante no sumário. Utilize junto a este template a NBR 6024:2012 – Numeração progressiva das seções de um documento.
 
@@ -37,6 +58,3 @@ A fonte utilizada no texto é Arial ou Times, tamanho 12, excetuando-se citaçõ
 As citações diretas com mais de três linhas devem ser destacadas com recuo de 4 cm da margem esquerda, fonte tamanho 11 e sem as aspas. Consulte sempre a norma específica para citações, NBR 10520:2002.
 
 As páginas pré-textuais (todas que precedem a Introdução) devem ser contadas, mas não numeradas, exceto a capa e página da Ficha Catalográfica. A numeração deve figurar a partir da Introdução, em algarismos arábicos, no canto superior direito da folha, a 2 cm da borda superior, ficando o último algarismo a 2 cm da borda direita da folha, fonte 11.
-
-
-% \input{tabelas/tabela1.tex}
