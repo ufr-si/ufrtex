@@ -147,7 +147,52 @@
 \makeatother
 % ---
 
+% ---
+% SISTEMA DE SIGLAS/ABREVIATURAS DINÂMICO
+% ---
+
+% Lista interna para armazenar as siglas definidas
+\def\UFRTEXsiglaslist{}
+
+% Comando para definir uma sigla
+\newcommand{\definesigla}[2]{%
+  % Adiciona a sigla à lista interna usando basic LaTeX
+  \expandafter\def\expandafter\UFRTEXsiglaslist\expandafter{%
+    \UFRTEXsiglaslist
+    \UFRTEXprintsigla{#1}{#2}%
+  }%
+  % Define um comando específico para esta sigla
+  \expandafter\def\csname UFRTEXsigla@#1\endcsname{#2}%
+}
+
+% Comando para usar uma sigla no texto (com hyperlink) 
+\newcommand{\sigla}[1]{%
+  \expandafter\ifx\csname UFRTEXsigla@#1\endcsname\relax%
+    \PackageWarning{ufr}{Sigla '#1' nao foi definida. Use \string\definesigla{#1}{definicao} antes de usar.}%
+    #1%
+  \else%
+    \hyperref[sigla:#1]{#1}%
+  \fi%
+}
+
+% Comando para gerar automaticamente a lista de siglas
+\newcommand{\imprimirsiglas}{%
+  \ifx\UFRTEXsiglaslist\empty
+    % Se não há siglas definidas, usar sistema manual (retrocompatibilidade)
+  \else
+    \begin{siglas}%
+      \UFRTEXsiglaslist%
+    \end{siglas}%
+  \fi
+}
+
+% Comando auxiliar para imprimir cada sigla na lista
+\newcommand{\UFRTEXprintsigla}[2]{%
+  \item[\hypertarget{sigla:#1}{#1}] #2%
+}
+
 \input{_configuracoes/dados.tex}
+\input{_configuracoes/siglas.tex}
 
 % informações do PDF
 \makeatletter
