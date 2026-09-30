@@ -26,12 +26,21 @@
 
 % ---
 %%% Inserir lista de abreviaturas e siglas %%% 
-% Para inserir uma nova abreviatura/sigla, basta usar o formato abaixo
+% NOVO SISTEMA: Use \definesigla{SIGLA}{Definição} para definir siglas automaticamente
+% Em seguida, use \sigla{SIGLA} no texto para referenciar com link
+% 
+% Sistema legado (manual): Para inserir manualmente, use o formato \item[SIGLA] Definição
 % ---
-\begin{siglas}
-  \item[ABNT] Associação Brasileira de Normas Técnicas
-  \item[abnTeX] ABsurdas Normas para TeX
-\end{siglas}
+
+% Siglas automáticas definidas com \definesigla serão impressas aqui
+\imprimirsiglas
+
+% Siglas manuais (sistema legado) - remova se usando apenas o sistema automático
+% Descomente as linhas abaixo para adicionar siglas manualmente:
+% \begin{siglas}
+%   \item[ABNT] Associação Brasileira de Normas Técnicas
+%   \item[abnTeX] ABsurdas Normas para TeX
+% \end{siglas}
 % ---
 
 % ---
